@@ -1,0 +1,5 @@
+CREATE DATABASE festflow;
+USE festflow;
+CREATE TABLE students(id INT AUTO_INCREMENT PRIMARY KEY,student_id VARCHAR(50),name VARCHAR(100),email VARCHAR(150),phone VARCHAR(20),department VARCHAR(100),event VARCHAR(150),qr_path VARCHAR(255),created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE admin(id INT AUTO_INCREMENT PRIMARY KEY,email VARCHAR(150),password VARCHAR(150));
+INSERT INTO admin(email,password) VALUES('admin@festflow.com','admin123');

@@ -1,0 +1,1 @@
+<h2>Dashboard</h2><table><tr><th>ID</th><th>Student ID</th><th>Name</th><th>QR</th></tr><% students.forEach(s=>{ %><tr><td><%=s.id%></td><td><%=s.student_id%></td><td><%=s.name%></td><td><img width=80 src='/<%=s.qr_path%>'></td></tr><% }) %></table>

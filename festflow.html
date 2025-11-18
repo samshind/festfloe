@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FestFlow – Neon Futuristic Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body{
+  background:radial-gradient(circle at 20% 20%, #1a1440, #0b0b1f 60%);
+  color:#eef0ff;
+  overflow-x:hidden;
+  animation:bgMove 18s infinite alternate ease;
+}
+@keyframes bgMove{0%{background-position:0 0;}100%{background-position:320px 320px;}}
+
+/* HEADER */
+header{
+  padding:22px 6%;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(10,10,25,0.55);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  position:sticky;top:0;z-index:50;
+}
+.logo{font-size:26px;font-weight:700;color:#fff;text-shadow:0 0 10px #b07fff99}
+nav a,nav button{
+  margin-left:25px;color:#dcdcff;font-size:15px;text-decoration:none;font-weight:500;
+  padding:8px 12px;border-radius:10px;background:transparent;border:0;cursor:pointer;
+  transition:.25s;
+}
+nav a:hover,nav button:hover{background:rgba(255,255,255,0.08);color:white}
+
+/* BUTTON */
+.btn{
+  padding:14px 22px;border-radius:14px;font-size:16px;border:none;cursor:pointer;
+  background:linear-gradient(90deg,#6c4cf2,#b07fff);
+  color:white;font-weight:600;
+  box-shadow:0 0 20px #6c4cf266;
+  transition:.3s;
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 28px #b07fffa6}
+
+/* HERO */
+.hero{padding:100px 6%;display:flex;gap:40px;align-items:center;position:relative}
+.hero::before{
+  content:"";position:absolute;left:-80px;top:-90px;width:400px;height:400px;
+  background:radial-gradient(circle,#6c4cf288,transparent 70%);
+  filter:blur(90px);
+}
+.hero-text h1{
+  font-size:50px;font-weight:700;
+  background:linear-gradient(90deg,#fff,#b07fff);
+  -webkit-background-clip:text;color:transparent;
+  text-shadow:0 0 18px #b07fff77;
+}
+.hero-text p{font-size:18px;color:#dcdcff;max-width:520px;margin:16px 0}
+.hero-img img{
+  width:400px;filter:drop-shadow(0 20px 50px #6c4cf244);
+  animation:floatImg 5s infinite ease-in-out;
+}
+@keyframes floatImg{0%{transform:translateY(0)}50%{transform:translateY(-14px)}100%{transform:translateY(0)}}
+
+/* SECTION */
+.section{padding:80px 6%;opacity:0;transform:translateY(40px);transition:.8s ease}
+.section.visible{opacity:1;transform:translateY(0)}
+.section h2{
+  font-size:32px;margin-bottom:10px;text-align:center;
+  background:linear-gradient(90deg,#fff,#b07fff);
+  -webkit-background-clip:text;color:transparent;
+}
+.section h2::after{
+  content:"";height:4px;width:60px;border-radius:6px;margin:8px auto;display:block;
+  background:linear-gradient(90deg,#6c4cf2,#b07fff);
+  box-shadow:0 0 12px #b07fff99;
+}
+.section p{text-align:center;max-width:700px;margin:0 auto 20px;color:#cfd3ff}
+
+/* CARDS */
+.cards,.system-grid,.events{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:40px}
+.card,.sys-box,.event{
+  background:rgba(255,255,255,0.04);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:26px;border-radius:18px;
+  transition:0.3s;
+}
+.card:hover,.sys-box:hover,.event:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 25px #6c4cf288;
+}
+.card h3,.sys-box h3,.event h3{margin-bottom:8px;color:#b07fff}
+.card p,.sys-box p,.event p{color:#d0d3ff}
+
+/* FOOTER */
+footer{
+  padding:40px 6%;text-align:center;margin-top:40px;
+  background:linear-gradient(180deg,rgba(108,76,242,0.2),transparent);
+  border-top:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 -10px 40px rgba(108,76,242,0.18);
+}
+footer p{color:#cfd3ff}
+
+/* LOGIN MODAL */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
+  visibility:hidden;opacity:0;transition:0.3s;z-index:200;
+}
+.modal-backdrop.show{visibility:visible;opacity:1}
+.modal{
+  width:90%;max-width:420px;background:rgba(20,20,40,0.95);
+  padding:28px;border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+  transform:scale(0.85);transition:.3s;
+}
+.modal-backdrop.show .modal{transform:scale(1)}
+.modal input{width:100%;padding:12px;border-radius:10px;margin-bottom:12px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:white}
+.btn-ghost{
+  padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.15);
+  background:transparent;color:#ddd;width:100%;cursor:pointer;margin-top:8px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">FestFlow</div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#system">System</a>
+    <a href="#events">Events</a>
+    <button id="openLogin">Login</button>
+  </nav>
+</header>
+
+<section class="hero section">
+  <div class="hero-text">
+    <h1>FestFlow — Futuristic Event Portal</h1>
+    <p>Smart, automated and AI-powered event management for college festivals, workshops and competitions.</p>
+    <button class="btn">Explore Events</button>
+  </div>
+  <div class="hero-img"><img src="https://cdn3d.iconscout.com/3d/premium/thumb/event-management-3d-illustration-6102861-500.png"></div>
+</section>
+
+<section class="section" id="features">
+  <h2>Why FestFlow?</h2>
+  <p>Powerful, automated, clean and student-friendly event tools.</p>
+  <div class="cards">
+    <div class="card"><h3>One-Tap Registration</h3><p>Instant, smooth and secure event sign-ups.</p></div>
+    <div class="card"><h3>Smart Alerts</h3><p>Automatic reminders and event notifications.</p></div>
+    <div class="card"><h3>Analytics Dashboard</h3><p>Track participants & event performance.</p></div>
+  </div>
+</section>
+
+<section class="section" id="system">
+  <h2>Core Modules</h2>
+  <p>Admin–student integrated workflow, clean and fast.</p>
+  <div class="sys-box"><h3>QR Verification</h3><p>Unique QR identity with secure verification.</p></div>
+    <div class="sys-box"><h3>Registration Engine</h3><p>Dynamic forms, limits, waitlist & automated alerts.</p></div>
+  </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section class="section" id="events">
+  <h2>Upcoming FestFlow Events</h2>
+  <p>Explore the latest college events happening soon.</p>
+  <div class="events">
+    <div class="event"><h3>TechNova 2025</h3><p>AI, Cybersecurity & Robotics Workshops.</p></div>
+    <div class="event"><h3>Cultural Spectra</h3><p>Dance • Drama • Fashion • Music.</p></div>
+    <div class="event"><h3>Sports Carnival</h3><p>Cricket • Volleyball • Badminton • E‑Sports.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 FestFlow | Futuristic Event Management Platform</p>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal-backdrop">
+  <div class="modal">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button id="doLogin" class="btn" style="width:100%">Login</button>
+    <button id="closeLogin" class="btn-ghost">Cancel</button>
+  </div>
+</div>
+
+<script>
+// LOGIN CONTROLS
+const loginBtn = document.getElementById('openLogin');
+const modal = document.getElementById('loginModal');
+const closeBtn = document.getElementById('closeLogin');
+const doLogin = document.getElementById('doLogin');
+
+loginBtn.addEventListener('click', () => {
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.classList.remove('show');
+  document.body.style.overflow = 'auto';
+});
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+});
+
+doLogin.addEventListener('click', () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  if (email === 'admin@sndt.edu' && password === 'admin123') {
+    alert('Login Successful');
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  } else {
+    alert('Invalid Credentials');
+  }
+});
+
+// SCROLL REVEAL ANIMATION
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
